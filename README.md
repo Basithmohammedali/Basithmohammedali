@@ -1,6 +1,6 @@
 # 👋 Hi, I'm Basith Mohammed Ali
 
-🛡️ Penetration Tester & SOC Analyst | Cybersecurity Student
+🛡️ Penetration Tester & SOC Analyst | 
 
 ---
 
