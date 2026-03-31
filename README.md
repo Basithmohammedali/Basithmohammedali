@@ -1,109 +1,102 @@
-# Somnium Lab — HTB Community Machine
+# 👋 Hi, I'm Basith Mohammed Ali
 
-> "You mustn't be afraid to dream a little bigger, darling."
-
-An Inception-themed HackTheBox-style vulnerable machine. A dream research portal with a file upload vulnerability as the entry point and a sudo misconfiguration for privilege escalation.
+🛡️ Penetration Tester & SOC Analyst | Cybersecurity Student
 
 ---
 
-## Difficulty
-**Easy**
+## 🧠 Professional Summary
 
-## Attack Path
-```
-File Upload (webshell) → www-data shell → lateral move to user → sudo PrivEsc → root
-```
+Cybersecurity student and aspiring Penetration Tester with hands-on experience in web application security, network security, and Active Directory exploitation. Skilled in identifying vulnerabilities such as SQL Injection, Cross-Site Scripting (XSS), IDOR, and authentication flaws using industry-standard tools.
 
-## Setup Instructions
-
-### Requirements
-- Ubuntu 22.04 LTS (fresh install)
-- VirtualBox / VMware
-- Host-only network adapter
-
-### Deploy
-
-```bash
-# Clone the repo
-git clone https://github.com/yourusername/somnium-htb
-cd somnium-htb
-
-# Copy app to /opt
-sudo cp -r . /opt/somnium
-
-# Run setup
-sudo bash setup.sh
-```
-
-### Manual Setup (step by step)
-
-```bash
-# 1. Install Python & Flask
-sudo apt update
-sudo apt install python3 python3-pip python3-venv -y
-
-# 2. Set up app
-sudo mkdir -p /opt/somnium
-sudo cp -r . /opt/somnium
-cd /opt/somnium
-python3 -m venv venv
-source venv/bin/activate
-pip install flask
-
-# 3. Set permissions
-sudo chown -R www-data:www-data /opt/somnium/static/uploads
-
-# 4. Install and start service
-sudo cp somnium.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable somnium
-sudo systemctl start somnium
-
-# 5. Set up sudo misconfiguration (PrivEsc path)
-echo "red ALL=(root) NOPASSWD: /usr/bin/find" | sudo tee -a /etc/sudoers
-
-# 6. Plant flags
-echo "HTB{dr3am_with1n_4_dr34m}" | sudo tee /home/red/user.txt
-echo "HTB{y0u_4r3_th3_arch1t3ct}" | sudo tee /root/root.txt
-sudo chmod 644 /home/red/user.txt
-sudo chmod 600 /root/root.txt
-```
+I also build and simulate real-world attack and defense environments using SIEM and EDR solutions.
 
 ---
 
-## Vulnerabilities
+## 🛠️ Technical Skills
 
-| Step | Vulnerability | Details |
-|------|--------------|---------|
-| Entry | Unrestricted File Upload | Upload a `.php` webshell, execute via `/static/uploads/shell.php` |
-| Lateral | Config file credentials | Password found in app config or `/opt/somnium/app.py` |
-| PrivEsc | sudo misconfiguration | `red` can run `/usr/bin/find` as root — GTFOBins |
+### 🔐 Web Application Security
 
----
+* OWASP Top 10
+* SQL Injection, XSS, CSRF, SSRF
+* IDOR, JWT Attacks, SSTI, NoSQL Injection
 
-## Credentials (for setup only — do not include in OVA)
+### 🌐 Network Security
 
-| User | Password | Note |
-|------|----------|------|
-| admin | inception2024 | Web admin |
-| red | [set your own] | Low-priv SSH user |
+* Host Discovery & Port Scanning
+* MITM Attacks
+* Firewall Evasion Techniques
+* Packet Analysis
 
----
+### 🏢 Active Directory Security
 
-## Intended Path (Spoiler)
-
-1. Register on the portal
-2. Upload a PHP webshell (`shell.php`) via the dream fragment uploader
-3. Navigate to `/static/uploads/shell.php?cmd=id`
-4. Get reverse shell as `www-data`
-5. Read `/opt/somnium/app.py` — find `red`'s password in comments or config
-6. `su red` → grab `user.txt`
-7. `sudo find . -exec /bin/bash \; -quit` → root shell
-8. Grab `root.txt`
+* Kerberoasting & AS-REP Roasting
+* Pass-the-Hash Attacks
+* BloodHound & LDAP Enumeration
 
 ---
 
-## Notes
-- No internet connection required on the VM
-- All dependencies installed locally
-- Service auto-restarts on crash (stable)
+## ⚙️ Tools
+
+Nmap • Metasploit • Burp Suite • Wireshark • Hashcat • Hydra • SQLmap • Nikto • Nuclei • Nessus
+Impacket • NetExec • Kerbrute • Mimikatz • Rubeus • Feroxbuster • FFUF • LinPEAS • WinPEAS
+
+---
+
+## 📊 Projects
+
+### 🔍 Splunk SIEM Home Lab
+
+* Deployed and configured Splunk for log monitoring
+* Built dashboards to detect brute-force and scanning attacks
+* Tuned alerts to reduce false positives
+
+### 🛡️ Wazuh EDR Deployment
+
+* Configured endpoint monitoring on Linux and Windows
+* Detected privilege escalation and suspicious processes
+* Correlated endpoint and network activity
+
+---
+
+## 🎓 Education
+
+* 🎓 Bachelor of Computer Applications (BCA) — 2025–2028 (Pursuing)
+
+  * Yenepoya University, India
+
+* 🎓 Advanced Diploma in Information Security — 2025–2026
+
+  * Offenso Hackers Academy, Calicut
+
+---
+
+## 📜 Certifications
+
+* 🏅 Advanced Diploma in Information Security (ADIS)
+* 🧪 CompTIA PenTest+ — In Progress
+
+---
+
+## 🌍 Languages
+
+* English
+* Malayalam
+
+---
+
+## 📫 Contact
+
+* 📧 Email: [basithmohammedali7@gmail.com](mailto:basithmohammedali7@gmail.com)
+* 📱 Phone: +91 97461 32665
+
+---
+
+## ⚡ Focus
+
+* Web Application Penetration Testing
+* Active Directory Attacks
+* Blue Team (SIEM & EDR)
+
+---
+
+⭐ *Learning, building, and breaking systems ethically to understand them deeply.*
